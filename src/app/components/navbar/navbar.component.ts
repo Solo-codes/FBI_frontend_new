@@ -62,7 +62,15 @@ export class NavbarComponent implements OnInit {
             popup: 'animate__animated animate__fadeOutUp'
           }
         }).then(() => {
-          this.logout();
+          try {
+            this.service.logout().toPromise();
+            this.router.navigate(['/login']);
+            new Promise((resolve) => setTimeout(resolve, 100));
+            window.location.reload();
+          } catch (error) {
+            console.error(error);
+            this.router.navigate(['/login']);
+          }
         });
       }
     );
