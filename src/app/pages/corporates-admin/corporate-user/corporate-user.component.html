@@ -1,0 +1,108 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+        <div class="header-body">
+
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt--7">
+    <div class="row">
+        <div class="col">
+            <div class="card shadow">
+                <div class="card-header border-0">
+
+                    <div class="row">
+                        <div class="col-md-8 mt-5">
+                            <h2>
+                                <a href="javascript:void(0)" (click)="navigateToCorporatesList()" data-toggle="tooltip"
+                                    data-placement="top" title="Tooltip on top" title="Back"><i
+                                        class="fa-solid fa-chevron-left"></i></a>
+                                View Corporate Users
+                            </h2>
+                        </div>
+                        <div class="col-md-4 mt-5 justify-content-end">
+                            <div class="input-group">
+                                <input class="form-control py-2 rounded-pill mr-1 pr-5" type="search" value="search"
+                                    id="example-search-input" placeholder="Search" [(ngModel)]="searchQuery"
+                                    (input)="filterData()">
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <ng-container *ngIf="filteredData.length > 0; else noDataTemplate">
+
+                    <div class="table-responsive">
+
+
+
+                        <table class="table align-items-center table-flush">
+                            <thead class="thead-light">
+
+                                <tr>
+                                    <th scope="col">Sl No.</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Corporate User Group</th>
+                                    <!-- <th scope="col">Address</th> -->
+                                    <th scope="col">Contact</th>
+                                    <th scope="col">Email</th>
+                                    <!-- <th scope="col">User Group Names</th> -->
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr *ngFor="let row of filteredData; let i = index">
+                                    <td>{{ skip + i + 1 }}</td>
+                                    <td>{{ row.userName }}</td>
+                                    <td>{{ row.corporateUserGroupName }}</td>
+
+                                    <td>{{ row.userContact }}</td>
+                                    <td>{{ row.userEmail }}</td>
+
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div class="card-footer py-4">
+                        <nav aria-label="..." *ngIf="paginationArray.length > 1">
+                            <ul class="pagination justify-content-end mb-0">
+                                <li class="page-item">
+                                    <a class="page-link" href="javascript:void(0)" tabindex="-1"
+                                        (click)="goToPage('previous')">
+                                        <i class="fas fa-angle-left"></i>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                </li>
+                                <li class="page-item" *ngFor="let page of paginationArray"
+                                    [ngClass]="{ 'active': page === currentPage }">
+                                    <a class="page-link" href="javascript:void(0)" (click)="goToPage(page)">{{page}}</a>
+                                </li>
+                                <li class="page-item"
+                                    [ngClass]="{ 'disabled': currentPage === paginationArray[paginationArray.length - 1] }">
+                                    <a class="page-link" href="javascript:void(0)" (click)="goToPage('next')">
+                                        <i class="fas fa-angle-right"></i>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                </ng-container>
+                <ng-template #noDataTemplate>
+                    <div class="text-center py-4">
+                        <h4>No data found</h4>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>

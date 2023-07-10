@@ -1,0 +1,110 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+        <div class="header-body">
+            <!-- Content of the header -->
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt--7">
+    <div class="row">
+        <div class="col">
+            <div class="card shadow">
+                <div class="card-header border-0">
+                    <div id="dangerAlert" class="alert alert-danger shadow" role="alert"
+                        style="display: none;background-color:#f5365c !important;border-color:#172b4d !important;">
+                        <strong>Error! </strong> <span id="alertMessage"></span>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <div class="card-body px-lg-5 py-lg-5">
+                        <div class="text-left text-muted mb-4">
+                            <h2>
+                                <a href="javascript:void(0)" (click)="navigateToOrderist($event)" data-toggle="tooltip"
+                                    data-placement="top" title="Back"><i class="fa-solid fa-chevron-left"></i></a>
+                                Documents Bulk Upload
+                            </h2>
+                        </div>
+                        <form role="form" [formGroup]="myForm" method="post" (ngSubmit)="upload()" id="myForm">
+
+                            <div class="row">
+                                <div class="col-md-4"></div>
+                                <div class="col-md-4">
+                                    <!-- <div class="form-group">
+                                        <div class="input-group input-group-alternative mb-3">
+                                            <label for="filesInput" class="upload-icon">
+                                                <i class="fa-solid fa-arrow-up-from-bracket"></i> <span id="text">Choose Files</span>
+                                            </label>
+                                            <input id="filesInput" class="form-control" formControlName="files"
+                                                type="file" multiple required accept="application/pdf" (change)="onFileChange($event)">
+
+                                        </div>
+                                    </div> -->
+                                    <div class="form-group mt-5">
+                                        <div class="input-group input-group-alternative ">
+                                            <div class="upload">
+                                                
+                                                <label class="upload-area label">
+                                                    <input type="file" id="filesInput" formControlName="files"  multiple required accept="application/pdf" (change)="onFileChange($event)">
+                                                    <span class="upload-button span">
+                                                        <i class="fas fa-arrow-up i"></i>
+                                                    </span>
+                                                </label>
+                                                <p class="p"> Choose Files </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4"></div>
+                            </div>
+                            <div *ngIf="selectedFiles.length" class="mt-5">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="selected-files">
+                                            <h4>Selected Files:</h4>
+                                            <ul>
+                                                <li *ngFor="let file of selectedFiles">
+                                                    {{ file.name }}
+
+                                                    <a href="javascript:void(0)" (click)="removeFile(file)"
+                                                        data-toggle="tooltip" data-placement="top" title="Remove"><i
+                                                            class="fa-solid fa-xmark" id="close"></i></a>
+                                                </li>
+
+
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="showNotUploadedFiles" class="mt-5">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="not-uploaded-files">
+                                            <h4>Not Uploaded Files:</h4>
+                                            <ul>
+                                                <li *ngFor="let file of notUploadedDocuments" id="eRROR">
+                                                    {{ file }}
+
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <button type="submit" class="btn btn-primary mt-4"
+                                    [disabled]="selectedFiles.length === 0 || !myForm.valid"
+                                    form="myForm">Upload</button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

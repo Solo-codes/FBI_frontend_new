@@ -1,0 +1,21 @@
+.custom-snackbar-error {
+    background-color: rgb(233, 30, 99); // Set your desired background color
+    color: #ffffff; // Set your desired font color
+
+    // Customize the close icon styles
+    .mat-simple-snackbar-action button {
+
+        color: #ffffff !important; // Set your desired font color for the close button
+    }
+}
+
+.custom-snackbar-success {
+    background-color: #00C853; // Set your desired background color
+    color: #ffffff; // Set your desired font color
+
+    // Customize the close icon styles
+    .mat-simple-snackbar-action button {
+
+        color: #ffffff !important; // Set your desired font color for the close button
+    }
+}
