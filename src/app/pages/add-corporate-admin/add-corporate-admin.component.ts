@@ -46,20 +46,33 @@ export class AddCorporateAdminComponent implements OnInit, OnDestroy {
 
   updateDynamicInputs() {
     const companyLevelsValue = this.myForm.get('companyLevels').value;
-
+  
     // Clear the existing dynamic inputs
     this.Level = [];
-
+  
+    // Remove the existing dynamic input controls
+    const dynamicControls = Object.keys(this.myForm.controls).filter((control) => control.startsWith('Level'));
+    for (const control of dynamicControls) {
+      this.myForm.removeControl(control);
+    }
+  
     // Generate new dynamic inputs based on the value of "companyLevels"
     if (companyLevelsValue && !isNaN(companyLevelsValue)) {
       const levels = parseInt(companyLevelsValue, 10);
       for (let i = 0; i < levels; i++) {
         this.Level.push(`Level ${i + 1}`);
         // Add form control for each dynamic input
-        this.myForm.addControl(`Level ${i + 1}`, new FormControl('', Validators.required));
+        const dynamicControl = new FormControl('', Validators.required);
+        this.myForm.addControl(`Level ${i + 1}`, dynamicControl);
+        
+        // Add event listener to the dynamic control for input changes
+        dynamicControl.valueChanges.subscribe(() => {
+          this.myForm.updateValueAndValidity();
+        });
       }
     }
   }
+  
 
   restrictToNumbers(event: any) {
     const input = event.target;
@@ -101,7 +114,7 @@ export class AddCorporateAdminComponent implements OnInit, OnDestroy {
           if (this.myForm.valid) {
             const data = {
               ShortName: '',
-              FullName: '',
+              FullName: this.myForm.get('name').value,
               IndustryClassification: '',
               DateOfCommencementOfBusiness: '',
               PanNo: '',
@@ -139,7 +152,7 @@ export class AddCorporateAdminComponent implements OnInit, OnDestroy {
                   console.log('Corporate created successfully!');
                 } else if (response.code === '500') {
 
-                  this.snackbarService.showCustomSnackBarError(response.login)
+                  this.snackbarService.showCustomSnackBarError(response.create_corporate)
 
                 } else {
 

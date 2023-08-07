@@ -13,9 +13,9 @@ import { catchError, takeUntil, tap } from "rxjs/operators";
 export class AuthService {
   constructor(private http: HttpClient) { }
   /*** LOCAL BACKEND ***/
-  baseURL = "http://localhost:8000";
+  // baseURL = "http://localhost:8000";
   /*** PRODUCTION BACKEND ***/
-  // baseURL = "http://54.254.242.153:8000";
+  baseURL = "http://54.254.242.153:8000";
 
   /* UAT LINK */
   // baseURL = "http://13.214.136.77:8000"
