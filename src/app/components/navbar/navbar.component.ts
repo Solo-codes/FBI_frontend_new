@@ -63,13 +63,19 @@ export class NavbarComponent implements OnInit {
           }
         }).then(() => {
           try {
-            this.service.logout().toPromise();
-            this.router.navigate(['/login']);
-            new Promise((resolve) => setTimeout(resolve, 100));
-            window.location.reload();
+            localStorage.clear();
+            try {
+              this.service.logout().toPromise();
+              this.router.navigate(['/login']);
+              new Promise((resolve) => setTimeout(resolve, 100));
+              window.location.reload();
+            } catch (error) {
+              console.error(error);
+              this.router.navigate(['/login']);
+            }
           } catch (error) {
-            console.error(error);
-            this.router.navigate(['/login']);
+            localStorage.clear();
+      
           }
         });
       }

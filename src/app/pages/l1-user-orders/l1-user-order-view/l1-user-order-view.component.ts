@@ -178,10 +178,10 @@ export class OrderL1userViewComponent implements OnInit, OnDestroy {
                 }
             );
     }
-    approove(row: any) {
+    Approve(row: any) {
         const invoiceID = row.invoiceID
         Swal.fire({
-            title: 'Approove Invoice?',
+            title: 'Approve Invoice?',
             text: '',
             icon: 'warning',
             showCancelButton: true,
@@ -191,7 +191,7 @@ export class OrderL1userViewComponent implements OnInit, OnDestroy {
             if (result.isConfirmed) {
                 try {
 
-                    this.service.approove(invoiceID, '/v1/invoice/approove_document_invoice/').subscribe(
+                    this.service.Approve(invoiceID, '/v1/invoice/Approve_document_invoice/').subscribe(
                         (response) => {
                             // Handle the success response
                             const currentRoute = this.router.url;
@@ -203,7 +203,7 @@ export class OrderL1userViewComponent implements OnInit, OnDestroy {
                         },
                         (error) => {
                             // Handle the error response
-                            console.error('approove failed:', error);
+                            console.error('Approve failed:', error);
 
                         }
                     );
@@ -213,7 +213,7 @@ export class OrderL1userViewComponent implements OnInit, OnDestroy {
 
                 }
             } else if (result.dismiss === Swal.DismissReason.cancel) {
-                Swal.fire('Cancelled', 'Not approoved', 'error');
+                Swal.fire('Cancelled', 'Not Approved', 'error');
             }
         });
     }
@@ -230,7 +230,7 @@ export class OrderL1userViewComponent implements OnInit, OnDestroy {
             if (result.isConfirmed) {
                 try {
 
-                    this.service.approove(invoiceID, '/v1/invoice/reject_document_invoice/').subscribe(
+                    this.service.Approve(invoiceID, '/v1/invoice/reject_document_invoice/').subscribe(
                         (response) => {
                             // Handle the success response
                             const currentRoute = this.router.url;
@@ -262,7 +262,7 @@ export class OrderL1userViewComponent implements OnInit, OnDestroy {
 
     }
 
-    bulkApproove() {
+    bulkApprove() {
         const orderID = this.orderService.orderID;
         const dangerAlert = document.getElementById('dangerAlert');
         const alertMessage = document.getElementById('alertMessage');
@@ -277,7 +277,7 @@ export class OrderL1userViewComponent implements OnInit, OnDestroy {
         }).then((result) => {
             if (result.isConfirmed) {
                 try {
-                    this.service.bulkApprove(orderID, '/v1/invoice/approove_bulk_invoice/').subscribe(
+                    this.service.bulkApprove(orderID, '/v1/invoice/approve_bulk_invoice/').subscribe(
                         (response) => {
                             // Handle the success response
                             console.log('approve response:', response);

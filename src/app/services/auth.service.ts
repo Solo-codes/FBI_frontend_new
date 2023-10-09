@@ -143,7 +143,7 @@ export class AuthService {
     const url = `${this.baseURL}${apiURL}`;
     return this.http.post<any>(url, requestBody);
   }
-  approove(invoiceID: number, apiURL: string) {
+  Approve(invoiceID: number, apiURL: string) {
     const requestBody = { invoiceID: invoiceID };
     const url = `${this.baseURL}${apiURL}`;
     return this.http.post<any>(url, requestBody);

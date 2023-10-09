@@ -95,31 +95,58 @@
                         </table>
 
                     </div>
-                    <div class="card-footer py-4">
-                        <nav aria-label="..." *ngIf="paginationArray.length > 1">
-                            <ul class="pagination justify-content-end mb-0">
-                                <li class="page-item">
-                                    <a class="page-link" href="javascript:void(0)" tabindex="-1"
-                                        (click)="goToPage('previous')">
-                                        <i class="fas fa-angle-left"></i>
-                                        <span class="sr-only">Previous</span>
-                                    </a>
-                                </li>
-                                <li class="page-item" *ngFor="let page of paginationArray"
-                                    [ngClass]="{ 'active': page === currentPage }">
-                                    <a class="page-link" href="javascript:void(0)" (click)="goToPage(page)">{{page}}</a>
-                                </li>
-                                <li class="page-item"
-                                    [ngClass]="{ 'disabled': currentPage === paginationArray[paginationArray.length - 1] }">
-                                    <a class="page-link" href="javascript:void(0)" (click)="goToPage('next')">
-                                        <i class="fas fa-angle-right"></i>
-                                        <span class="sr-only">Next</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
+             <div class="card-footer py-4">
+                      <nav aria-label="..." *ngIf="paginationArray.length > 1">
+                        <ul class="pagination justify-content-end mb-0">
+                          <li class="page-item">
+                            <a class="page-link" href="javascript:void(0)" tabindex="-1" (click)="goToPage('previous')">
+                              <i class="fas fa-angle-left"></i>
+                              <span class="sr-only">Previous</span>
+                            </a>
+                          </li>
+                    
+                          <!-- Show first page link if not on the first page -->
+                          <li class="page-item" *ngIf="currentPage !== 1">
+                            <a class="page-link" href="javascript:void(0)" (click)="goToPage(1)">1</a>
+                          </li>
+                    
+                          <!-- Show ellipsis or second page link based on the number of pages -->
+                          <ng-container *ngIf="paginationArray.length > 2">
+                            <!-- When there are 2 or more pages, show page 2 directly -->
+                            <li class="page-item" *ngIf="paginationArray.length > 3 && currentPage > 1">
+                              <a class="page-link" href="javascript:void(0)" (click)="goToPage(2)">2</a>
+                            </li>
+                          </ng-container>
+                    
+                          <!-- Show current page -->
+                          <li class="page-item active">
+                            <a class="page-link">{{currentPage}}</a>
+                          </li>
+                    
+                          <!-- Show pages after the current page -->
+                          <ng-container *ngFor="let page of paginationArray">
+                            <li class="page-item"
+                                [ngClass]="{ 'active': page === currentPage && currentPage !== paginationArray.length }"
+                                *ngIf="page > currentPage && page <= currentPage + 1 && page !== paginationArray.length">
+                              <a class="page-link" href="javascript:void(0)" (click)="goToPage(page)">{{page}}</a>
+                            </li>
+                          </ng-container>
+                    
+                          <!-- Show last page link if not on the last page -->
+                          <li class="page-item" *ngIf="currentPage !== paginationArray.length">
+                            <a class="page-link" href="javascript:void(0)" (click)="goToPage(paginationArray.length)">{{paginationArray.length}}</a>
+                          </li>
+                    
+                          <!-- Show "Next" button if not on the last page -->
+                          <li class="page-item" *ngIf="currentPage < paginationArray.length && currentPage !== paginationArray.length - 1">
+                            <a class="page-link" href="javascript:void(0)" (click)="goToPage('next')">
+                              <i class="fas fa-angle-right"></i>
+                              <span class="sr-only">Next</span>
+                            </a>
+                          </li>
+                        </ul>
+                      </nav>
                     </div>
-
                 </ng-container>
                 <ng-template #noDataTemplate>
                     <div class="text-center py-4">
