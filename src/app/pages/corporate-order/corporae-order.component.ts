@@ -51,12 +51,12 @@ export class CorporateOrderListComponent implements OnInit, OnDestroy {
         const user = JSON.parse(localStorage.getItem('user'))
         const corporateID = user.user_id;
         console.log(`=-=--=-user_id=-=-${corporateID}`)
-        this.service.getCoporateOrderLists(corporateID, this.skip, this.limit, '/v1/corporate/list_corporate_orders/')
+        this.service.getL1UserOrderLists(this.skip, this.limit, '/v1/invoice/list_only_order_user_new/')
             .subscribe(
                 (response) => {
                     console.log(' order details retrieved successfully:', response);
                     this.data = response.data;
-                    this.totalCount = response.Total_count;
+                    this.totalCount = response.count;
                     this.currentPage = Math.ceil((this.skip + this.limit) / this.limit); // Update the current page based on skip and limit
                     this.paginationArray = this.getPaginationArray(this.totalCount, this.limit);
                     this.filterData(); // Apply initial filtering
