@@ -18,6 +18,7 @@ export class CorporateVendorOrderInvoicesAdminComponent implements OnInit, OnDes
     data: any[] = [];
 
     totalCount = 0;
+    totalPages = 0;
     currentPage: number = 1;
     paginationArray: number[] = [];
     searchQuery: string = '';
@@ -138,7 +139,9 @@ export class CorporateVendorOrderInvoicesAdminComponent implements OnInit, OnDes
                     console.log('Corporate vendor order invoice details retrieved successfully:', response);
                     this.data = response.data;
                     this.totalCount = response.Total_count;
-                    this.currentPage = Math.ceil((this.skip + this.limit) / this.limit); // Update the current page based on skip and limit
+                    this.totalPages = Math.ceil(this.totalCount / this.limit);
+
+                    this.currentPage = Math.ceil((this.skip + this.limit) / this.limit);Math.ceil((this.skip + 1) / this.limit); // Update the current page based on skip and limit
                     this.paginationArray = this.getPaginationArray(this.totalCount, this.limit);
                     this.filterData(); // Apply initial filtering
                 },
