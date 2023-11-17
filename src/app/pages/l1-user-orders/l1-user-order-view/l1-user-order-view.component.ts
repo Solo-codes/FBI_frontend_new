@@ -65,7 +65,7 @@ export class OrderL1userViewComponent implements OnInit, OnDestroy {
                 (response) => {
                     console.log(' order details retrieved successfully:', response);
                     this.data = response.data;
-                    this.totalCount = response.Total_count;
+                    this.totalCount = response.count;
                     this.totalPages = Math.ceil(this.totalCount / this.limit);
 
                     this.currentPage = 
