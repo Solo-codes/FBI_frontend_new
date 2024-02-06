@@ -15,10 +15,10 @@ export class AuthService {
   /*** LOCAL BACKEND ***/
   // baseURL = "http://localhost:8000";
   /*** PRODUCTION BACKEND ***/
-  // baseURL = "http://54.254.242.153:8000";
+  // baseURL = "";
 
   /* UAT LINK */
-  baseURL = "http://122.248.216.29:8000"
+  baseURL = "http://52.66.203.117:8000"
 
 
   // 1. Generic API Methods
