@@ -91,7 +91,7 @@
                                     <td ><a href="javascript:void(0)" (click)="invoiceNoChecker(row)"><i class="fa-solid fa-eye"></i></a></td>
 
 
-                                    <td><a href="javascript:void(0)" (click)="viewDocumentInvoice(row)"><i class="fa-solid fa-download"></i></a></td>
+                                    <td><a  *ngIf="row.invoiceStatus !== 'INVOICE DOCUMENT NEED TO UPLOAD'" href="javascript:void(0)" (click)="viewDocumentInvoice(row)"><i class="fa-solid fa-download"></i></a></td>
                                     <td>
                                         <div ngbDropdown placement="bottom-right"
                                             *ngIf="row.invoiceStatus !== 'INVOICE DOCUMENT NEED TO UPLOAD' && row.invoiceStatus !== 'REJECTED' && row.user_level == User_Level">
