@@ -86,7 +86,7 @@ export class OrderLxuserViewComponent implements OnInit, OnDestroy {
                 (response) => {
                     console.log(' order details retrieved successfully:', response);
                     this.data = response.data;
-                    this.totalCount = response.Total_count;
+                    this.totalCount = response.count;
                     this.totalPages = Math.ceil(this.totalCount / this.limit);
 
                     this.currentPage =Math.ceil((this.skip + this.limit) / this.limit);Math.ceil((this.skip + 1) / this.limit);// Update the current page based on skip and limit
