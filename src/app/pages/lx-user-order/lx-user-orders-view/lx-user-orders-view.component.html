@@ -15,7 +15,7 @@
                     <div class="row">
                         
                         <div class="col-md-3">
-                            <div class="input-group">
+                            <div class="input-group" *ngIf="isBulkApproveVisible()">
                                 <button type="button" class="btn btn-default" (click)="bulkApprove()">Approve All</button>
 
                             </div>

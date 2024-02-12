@@ -78,7 +78,9 @@ export class OrderL1userViewComponent implements OnInit, OnDestroy {
                 }
             );
     }
-
+    isBulkApproveVisible(): boolean {
+        return this.filteredData.every(row => row.invoiceStatus !== 'INVOICE DOCUMENT NEED TO UPLOAD' && row.invoiceStatus !== 'REJECTED');
+      }
     getPaginationArray(totalCount: number, limit: number): number[] {
         const pageCount = Math.ceil(totalCount / limit);
         const paginationArray = [];
