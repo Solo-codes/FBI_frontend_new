@@ -43,6 +43,7 @@ import { L1createOrderCorporateComponent } from './pages/l1-user-orders/place-or
 import { LxUserComponent } from './pages/lx-user-order/lx-user-order.component';
 import { OrderLxuserViewComponent } from './pages/lx-user-order/lx-user-orders-view/lx-user-orders-view.component';
 import { UpdateCorporateAdminComponent } from './pages/update-corporate-admin/update-corporate-admin.component';
+import { ToISTPipe } from './services/time.service';
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -54,7 +55,8 @@ import { UpdateCorporateAdminComponent } from './pages/update-corporate-admin/up
     AppRoutingModule,
     CommonModule ,
     ReactiveFormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    
   ],
   declarations: [
     AppComponent,
@@ -83,7 +85,8 @@ import { UpdateCorporateAdminComponent } from './pages/update-corporate-admin/up
     L1createOrderCorporateComponent,
     LxUserComponent,
     OrderLxuserViewComponent,
-    UpdateCorporateAdminComponent
+    UpdateCorporateAdminComponent,
+    ToISTPipe
   ],
   // providers: [
   //   {provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi:true},

@@ -62,7 +62,7 @@
                                     <td>{{ row.orderID }}</td>
                                     <td>{{ row.invoiceTrackStatus }}</td>
 
-                                    <td>{{ row.invoiceTrackCreatedOn | date:'dd-MM-yyyy hh:mm:ss a' }}</td>
+                                    <td>{{ row.invoiceTrackCreatedOn | toIST | date:'dd-MM-yyyy hh:mm:ss a' }}</td>
                                     <td><a href="javascript:void(0)" (click)="view(row)"><i
                                                 class="fa-solid fa-eye"></i></a></td>
 
