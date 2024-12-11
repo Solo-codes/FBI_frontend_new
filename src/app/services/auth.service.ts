@@ -13,12 +13,14 @@ import { catchError, takeUntil, tap } from "rxjs/operators";
 export class AuthService {
   constructor(private http: HttpClient) { }
   /*** LOCAL BACKEND ***/
-  // baseURL = "http://localhost:8000";
+  baseURL = "http://localhost:8000";
   /*** PRODUCTION BACKEND ***/
   // baseURL = "";
 
   /* UAT LINK */
-  baseURL = "http://52.66.203.117:8000"
+  // baseURL = "http://52.66.203.117:8000"
+  // baseURL = "http://clientchillar.com:8079";
+
 
 
   // 1. Generic API Methods

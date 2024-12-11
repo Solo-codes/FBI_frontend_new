@@ -126,7 +126,7 @@ export class CorporateUserComponent implements OnInit, OnDestroy {
                     const data = {
                         userID: userID,
                     };
-                    this.service.put(data, '/v1/users/change_status_user/').subscribe(
+                    this.service.put(data, '/v1/users/change_status_user').subscribe(
                         (response) => {
                             // Handle the success response
                             const currentRoute = this.router.url;

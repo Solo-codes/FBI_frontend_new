@@ -41,7 +41,7 @@ export class OrderLxuserViewComponent implements OnInit, OnDestroy {
     }
 
     getUser() {
-        this.service.getCurrentUser("v1/current_user/get_current_user/").subscribe(
+        this.service.getCurrentUser("/v1/current_user/get_current_user/").subscribe(
             (response) => {
                 // Handle the success response
 
@@ -75,6 +75,7 @@ export class OrderLxuserViewComponent implements OnInit, OnDestroy {
         }
     }
 
+    
     getOrder() {
         const orderID = this.orderService.orderID
         console.log(`=-=--=-orderID=-=-${orderID}`)

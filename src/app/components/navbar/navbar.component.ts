@@ -45,7 +45,7 @@ export class NavbarComponent implements OnInit {
 
     this.listTitles = AdminLayoutRoutes.filter(listTitle => listTitle);
 
-    this.service.getCurrentUser("v1/current_user/get_current_user/").subscribe(
+    this.service.getCurrentUser("/v1/current_user/get_current_user/").subscribe(
       (response) => {
         console.log('user details getted success:', response);
         this.user_type = response.data.user_type;

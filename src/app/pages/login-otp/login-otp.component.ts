@@ -130,7 +130,7 @@ export class LoginOtpComponent implements OnInit, OnDestroy {
       otp: this.myForm.value.otp.toString(),
     };
     console.log("Data = ", data);
-    this.service.post(data, "/v1/security/otp_verify/").subscribe((response) => {
+    this.service.post(data, "/v1/security/otp_verify").subscribe((response) => {
       // Handle the success response
       this.isLoading = false;
 

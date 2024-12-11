@@ -85,7 +85,7 @@ export class AddVendorCorporateComponent implements OnInit, OnDestroy {
                         };
 
 
-                        this.service.post(data, '/v1/vendor/add_vendor/').subscribe(
+                        this.service.post(data, '/v1/vendor/add_vendor').subscribe(
                             (response) => {
                                 // Handle the success response
                                 console.log('create response:', response);

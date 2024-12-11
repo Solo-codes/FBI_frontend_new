@@ -135,7 +135,7 @@ export class UpdateUserCorporateComponent implements OnInit, OnDestroy {
                         };
 
 
-                        this.service.put(data, '/v1/users/update_single_user/').subscribe(
+                        this.service.put(data, '/v1/users/update_single_user').subscribe(
                             (response) => {
                                 // Handle the success response
                                 console.log('update response:', response);

@@ -30,7 +30,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     console.log(`=-=-=-user=-=-=${localStorage.getItem('user')}`)
 
-    this.service.dahboardDetails("v1/admin/dahboard_details/").subscribe(
+    this.service.dahboardDetails("/v1/admin/dahboard_details/").subscribe(
       (response) => {
         console.log('dashboard details getted success:', response);
         this.vendor = response.data.T_vendors;
